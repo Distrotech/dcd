@@ -1,0 +1,150 @@
+.\" dcd.1 by David E. Smith. A lot of this man page was stolen from
+.\" other random man pages since I don't know how to write them. :)
+.\"
+.\" =========================================================================
+.TH DCD 1 "15 June 2002" "dcd-0.98"
+.SH NAME
+dcd \- play audio CDs, program CD-ROM as a smart CD player
+.PD
+.SH SYNOPSIS
+\fBdcd\fP [\fBoptions\fP] [\fBtrack-list\fP]
+.PD
+.\" =========================================================================
+.SH DESCRIPTION
+\fIdcd\fP will help you use your CD-ROM drive as a CD player under Linux.
+In addition to merely playing CDs, \fIdcd\fP can also play random tracks,
+accept a pre-programmed list of tracks, and generally do most of the things
+a good portable CD player is capable of.
+.PD
+.\" =========================================================================
+.SH OPTIONS
+.TP
+.IP \fIdir\fP
+List a directory of the CD contents (track numbers and playing times,
+and track names if they are available).
+This option causes \fIdcd\fP to exit immediately.
+.IP \fIeject\fP
+Open the CD-ROM tray, and exit immediately. \fIdcd\fP tries to locate,
+and kill, other \fIdcd\fP processes that may be running.
+.IP \fIhelp\fP
+Display a friendly help message, and exit.
+.IP \fIinfo\fP
+Display one line of information about the current CD, like this:
+.br
+Playing track 3 (of 15), length 5:35 (of 77:05)
+.br
+This option causes \fIdcd\fP to exit immediately.
+.IP \fIpause\fP
+Pause or resume the current CD, exiting immediately.
+.IP \fIstop\fP
+Stop the CD currently in the player. \fIstop\fP makes a reasonable effort
+to locate, and kill, other dcd processes that may be running.
+.IP \fIversion\fP
+Report the version of \fIdcd\fP and a brief copyright notice, and
+exit immediately.
+.IP \fIa\fP
+Print the number of the first track of the CD to stdout, and
+exit immediately. Comes in handy for various shell scripts.
+.IP \fIz\fP
+Print the number of the last track of the CD to stdout, and
+exit immediately. Comes in handy for various shell scripts.
+.IP \fIloop\fP
+Loop the tracks in the track list, or the entire CD if no tracks are
+specified.
+An effort is made to locate, and kill, other \fIdcd\fP
+processes. (Having two copies of dcd running, each with different looped
+track lists, could get very strange very quickly.)
+.IP \fIquit\fP
+Normally, \fIdcd\fP does everything it can to get out of the way quickly,
+freeing up the console or xterm it was launched from and allowing you to
+get on with your day. Specifying \fIquit\fP inhibits this; i.e. \fIdcd\fP
+will NOT exit until it's done. This lets you use \fIdcd\fP in things like
+combined CD/MP3 playlists.
+\fIdcd\fP attempts to detect unwise combinations of
+commands (like loop and random, which would effectively create an infinite loop)
+and nip them in the bud.
+.IP \fIrandom\fP
+Play randomly-selected tracks from the CD forever (until killed), and
+return to the console immediately. As with \fIloop\fP, an effort is made
+to deal with other rogue dcd tasks. This option may accept a tracklist.
+.IP \fIx\fP
+Display the CD Index discid for the CD, exiting immediately. This isn't
+often useful by itself, but might be useful in a script of some sort.
+.IP \fIback\fP
+Go to the previous track on the CD. If you're already on the first track,
+this loops around to the last track. As with many other options, we attempt
+to locate and kill other instances of dcd.
+.IP \fIforward\fP
+Go to the next track on the CD. If you're already on the last track, this
+loops around to the first track. As with many other options, we attempt to
+locate and kill other instances of dcd.
+.IP \fIkill\fP
+Kills off other known instances of dcd. Might be useful in a shell script,
+or just in case dcd somehow gets carried away and starts doing weird
+things.
+.\" =========================================================================
+.SH EXAMPLES
+.I \fIdcd\fP
+Plays a CD, plain and simple.
+.TP
+.I \fIdcd 2\fP
+Stars playing a CD from track 2.
+.TP
+.I \fIdcd loop\fP
+Plays the whole CD, over and over and over, until killed (with dcd stop).
+.TP
+.I \fIdcd loop 2 4 7\fP
+Plays tracks 2, 4, and 7, over and over, in that order.
+.TP
+.I \fIdcd random\fP
+Plays random tracks from the CD, over and over and over...
+.TP
+.I \fIdcd random 1 3 5 7 9 12\fP
+Randomly selects from the tracks listed, and plays 'em over and over...
+.TP
+.I \fIdcd 4 6 quit\fP
+Plays tracks 4 and 6, then exits. (Normally, dcd will return you to a shell 
+prompt immediately; this option is useful for some scripts, combination 
+MP3/CD playlists, and other cool stuff.)
+
+.\" =========================================================================
+.SH BUGS
+\fIdcd\fP doesn't make nearly as many error/sanity checks as it could.
+It assumes you know what you're doing, so trying to eject a CD when the
+tray is already open (as one example) could have undefined results. It
+shouldn't do anything truly bad, but under the terms of the GNU General
+Public License anything it somehow does isn't my fault.
+.br
+.br
+\fIdcd\fP unfortunately now requires Internet access to work. Blame the
+people at MusicBrainz for that one. When they discontinued their lean, 
+sexy "CD Index" project in favor of the current project, things got a 
+lot less pleasant for everyone involved (except perhaps for them). 
+Fortunately, broadband access is rather more common these days, so 
+hopefully this isn't as much of a problem as it would have been a couple 
+years back.
+.PD
+.\" =========================================================================
+.SH "SEE ALSO"
+\fIcdcd\fP(1), \fIworkbone\fP(1)
+.PD
+.\" =========================================================================
+.SH URL
+The dcd home page is currently at:
+.br
+\fChttp://www.technopagan.org/dcd/\fR
+.PD
+.\" =========================================================================
+.SH TRIVIA
+`dcd' stands for Dave's CD player.
+.PD
+.\" =========================================================================
+.SH AUTHORS
+\fIdcd\fP was written by David E. Smith <dave@technopagan.org>. In
+analphabetical order, the following people contributed really keen ideas
+(and in some cases, actual code): Scott Walker, Luc Vrancx, Robert Tol,
+Kevin Thompson, Nigel Stepp, Othmar Pasteka, Markus F.X.J. Oberhumer,
+Mario Moder, Lorenz Minder, Lalo Martins, Britton Kerin, Alvaro Herrera,
+Anders Semb Hermansen, Shane Henthorne, Boris Gjenero, Aidan Delaney, Izak 
+Burger, Don Barber, and Jens Axboe.
+.PD

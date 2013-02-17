@@ -1,0 +1,20 @@
+Begin3
+Title:          dcd
+Version:        0.99
+Entered-date:   04JAN03
+Description:    dcd (Dave's CD player) is a small CD player, for people
+                who think workbone is too bloated and graphical. All
+                functions are accessible from the command line. Loop
+                tracks in the background, use it with 'at' as an alarm
+                clock, whatever.
+Keywords:       cdrom cdplayer dcd compact disc player 
+Author:         dave@technopagan.org (David E. Smith)
+Maintained-by:  dave@technopagan.org (David E. Smith)
+Primary-site:   http://www.technopagan.org/dcd/
+Alternate-site: sunsite.unc.edu /pub/Linux/apps/sound/cdrom/cli
+Platforms:      Linux, with most any CD-ROM drive that handles the
+                standard IOCTLs (yours probably does). An Internet
+                connection is now required, as is the mb_client
+		library from www.musicbrainz.org.
+Copying-policy: GPL
+End

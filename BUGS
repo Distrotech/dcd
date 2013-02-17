@@ -1,0 +1,17 @@
+Most of the known bugs revolve around things that aren't sufficiently
+error-checked. Here's the biggest examples:
+
+* If you use the Internet with dcd, to download track lists from the CD
+  Index, who knows what could happen. Not everything is checked as well as
+  it could be. (This is even more true now, since there's enough code in 
+  the strangely-named "libmusicbrainz" that I can't comfortably wrap my
+  brain around it all. And it does all the network stuff now.)
+
+* The `quit' code, to inhibit the normal exit of dcd, isn't thoroughly tested.
+
+* More than a few people have reported strangeness with the `info'
+  command, reporting the drive is not playing when it clearly is.
+  Unfortunately, some (many?) CD-ROM drives don't properly support the
+  status-request command. I've tried to work around this, but the new
+  strangeness isn't any better (for many people, dcd will report the CD-ROM
+  is playing when it isn't). You can't win.

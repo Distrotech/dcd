@@ -1,0 +1,79 @@
+dcd: Dave's CD player
+
+Installation instructions are in the file named INSTALL.
+The copying policy and license for use are in the file named COPYING.
+Known bugs are in the file called BUGS.
+
+***
+
+What is it? -- dcd is a simple, command-line based CD player.
+
+There was one simple premise behind the design of dcd:
+You want to listen to a CD.
+
+That's it. You don't need to tie up a console, launch X Windows, or
+connect to the Internet to get music pounding out of your speakers as
+quickly as possible. So, unless you tell it otherwise, dcd will start a CD
+and get out of your way. It's programmable, intelligent, and has plenty of
+"cool" features, but they won't interfere with this goal.
+
+***
+
+Building dcd
+
+Simply typing `make' in the dcd source directory will usually work fine.
+If it doesn't, take a look at the Makefile with your favorite text editor.
+There are a few configurable things in there (like the location of your
+CD-ROM device, which defaults to /dev/cdrom).
+
+Oh yeah, you'll need a 2.x Linux kernel. It should work on all 2.0 and
+later kernels, but I haven't tested it extensively. (I tend to use the 
+most recent kernels, so it should always work there...)
+
+If you're a Debian user, Lalo Martins tries to keep a current copy of dcd
+in the Debian package system. I don't know how it works, though, and if
+it's not current don't blame me.
+
+***
+
+Using dcd:
+dcd by itself starts the disk on track 1.
+dcd 6 starts the disk at track 6. Substitute your favorite number.
+dcd stop will stop the CD.
+dcd eject will eject the CD tray (if your hardware supports it).
+dcd info and dcd dir reports information on the entire disk.
+dcd loop will loop, continually playing the disc or the tracks specified.
+dcd (list of numbers) will do the same thing.
+dcd random will randomly play tracks from the CD, natch.
+There's a few other less-used options detailed in the man page (like help).
+
+All parameters can be shortened to their first letter; dcd i is just as
+good as dcd info. GNU fanatics can put a dash in front of options (getting
+dcd -i or dcd -info) too.
+
+Looping is a bit tricky, mostly because Linux's sleep() call depends
+somewhat on how heavily the system is loaded. The last few seconds of a
+track may be cut off, or the first few seconds of the next track may be
+played before the next selected track starts. If this is a serious
+problem, look at the Makefile; there's a switch there just for you.
+
+***
+
+UGLY LEGAL STUFF
+
+This program is (C) 1998-2001 David E. Smith, and covered by the GNU GPL.
+See the file `COPYING' for details.
+
+The CD Index algorithm is described at http://www.freeamp.org/cdindex/
+and in fact I browsed heavily through their reference implementation to
+do mine.
+
+base64.c is (C)1988 Leland Stanford Junior University, (C) 1998 University
+of Washington. See that file for more information.
+
+sha.c was contributed to the public domain by someone listed in that file.
+The headers in that file are so bloody confusing, I can't sort it out.
+
+***
+
+Think dcd sucks? Tell me about it at <dave@technopagan.org>.

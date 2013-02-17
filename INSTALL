@@ -1,0 +1,25 @@
+Unfortunately, these instructions got rather more complicated. Thank the 
+fine people at MusicBrainz, who abandoned their sleek, sexy, simple "CD 
+Index" project in favor of the fully-buzzword-compliant (XML! Distributed! 
+Goofy name with a Z at the end!) service they now offer...
+
+You'll first have to install libmusicbrainz, available from
+http://www.musicbrainz.org/download.html
+
+Their library requires the full suite of C++ stuff, including libstdc++ 
+and a C++ compiler. I wish I could do something about that.
+
+Anyway. Once that's installed (presumably in /usr/local somewhere), you 
+can proceed with building dcd proper.
+
+
+* Look at the Makefile.
+  There are a few things you might want to change:
+  * If /dev/cdrom isn't a symlink to your "real" CD-ROM device, either edit
+    the Makefile or create the symlink as appropriate.
+  * You might want to enable the debugging flags. But probably not.
+  * Various other configuration options which are explained much better
+    in the Makefile. 
+
+* Type `make'. Then type `make install' or just copy the binary (dcd)
+  and manual page (dcd.1) somewhere useful.

@@ -1,0 +1,86 @@
+0.99.1 "thinner"
+	Removed network support (it's in the Makefile) for Thinstation.
+0.99 "sf.net"
+	Basically, moved to SourceForge. That's pretty much it.
+0.98 "Holy..."
+     Pulled  out all the CD Index stuff, since that site apparently
+       suffered heat death or something... Replaced it with massive
+       ugly dependencies on libmusicbrainz.
+     The above means that libstcd++, libmusicbrainz, and libm are REQUIRED.
+     Added compression to local storage. Though not strictly required,
+       you may wish to clean out your $HOME/.cdindex directory. (I think
+       I've covered all the likely errors but I make few promises.)
+     Bugs fixed after the above lobotomy: fixed the "no match found" bug.
+     Added Robert Tol's "un-pause even if we're not really paused" patch.
+0.96 "Nomic"
+     Added Othmar Pasteka's "is there even a CD in the drive" patch which
+       was so simple I shoulda done it years ago. :-)
+0.95 "Not again..."
+     Replaced base64.c with a more GPL-friendly version.
+0.94 "Unstable Tina"
+     Actually check return value for DNS lookup, since cdindex.org
+       seems to be broken right about now.
+     Named in honour of Unstable Tina (www.unstabletina.com), an
+       incredibly cool local band. If you're in Saint Louis, drop by a show!
+0.93 "One Billion"
+     Fixed the "no-info" warning displayed twice bug. Not really fixed
+       perhaps, but made it go away...
+     Named in honour of the one billionth second of the UNIX epoch 
+       (September 9, 2001, 1:46:40 AM GMT). Or Dr. Evil. Who knows?
+0.92 "Lorenz"
+     Named after Lorenz Minder <lminder@gmx.net> who provided a bucket
+       full of useful libcdplay patches. Thanks! The most important one
+       is that dcd now uses the CDROMSTART ioctl instead of CDROMSTOP.
+       If this causes problems, please let me know ASAP.
+     Added a compile-time option to make dcd be quiet about CDs that
+       the CD Index doesn't know about.
+     Truncate track names at 64 characters, so things still fit neatly
+       on the standard 80-column screen.
+     Plenty of file fixes, so that things like a non-existent ~/.cdindex
+       directory shouldn't make dcd crash and burn anymore.
+     Added "examples" to the man page.
+     Reversed the changelog so newer stuff is at the top. :-)
+0.90 "Quad Damage"
+     Endian fix (thanks to that guy from debian)
+     `z' option -- useful for shell scripts (mostly MP3 ripping)
+     `a' option -- like the above but backwards. :-)
+     `k' option -- kills off dcd (in case things start running away)
+     I think I've finally fixed the lingering `info doesn't work' bit.
+0.81 "CGB Spender" (if you don't know, don't ask)
+     Bug: 0.80 doesn't like cdindex.org. Fixed.
+0.80 "Felicity"
+     Took out the old 'b' option which was really goofy, and added the
+       new (b)ack and (f)orward options to skip about the disc. Hacks
+       on dcd.c, cd-misc.c, cd-misc.h, screenop.c as appropriate.
+     Finally put useful CD Index code in. cdindex.c hacked all to hell.
+     Rewrote process handler code to be far more sane internally (using
+       FILE instead of icky read/write). process.c beaten heavily.
+     Added networking code, courtesy of LordVader @Dalnet. Still more
+       rewrites on cdindex.c, screenop.c. 'connect' command option added.
+0.70 "Roswell Grey"
+     Added u and b options for CD Index URLs. 'x' now merely chucks out
+       the disc id, which frankly isn't too useful.
+     Added `dcd p' to pause/resume the disc. And it works this time too.
+     libcdplay.c: do smart things when disc isn't playing (cd_current_track)
+     libcdplay.c: rearranged a few boring internals
+     Fixed all freeamp.org URL references to point to cdindex.org
+0.60 "Feature Creep"
+     Added `dcd x' to generate CD Index discids. Added base64.c and sha.c
+       in support of that. (See those files for (C) info.)
+     Added all PID maintenance code, thanks to Lalo Martins' nagging :)
+     Re-added `dcd n' to go with PID management; it now bumps an existing
+       dcd process to its next track (or next random track, or whatever)
+       Added process.c which has all that stuff, including ugly filestuff.
+     screenop.c: Fixed the helpscreen.
+     random now can take a tracklist too.
+     Rewrote changelog so it looks all professional.
+     Added check for data track to libcdplay.c and screenop.c
+0.51 "Syndrome"
+     Added `quit' to avoid exiting immediately, works great for playlists.
+     screenop.c: various cleanups, thanks to Alvaro Herrera
+     Started giving versions clever names like tin prereleases.
+0.50 Removed `next' and `previous' command switches. dcd.c was almost
+     completely rewritten.
+0.40 Added `stop CD player on SIGTERM'. Some internal cleanups. `dcd loop'
+     without a tracklist now plays the whole disc.
+0.35 Added `eject'
