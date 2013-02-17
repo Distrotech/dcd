@@ -45,7 +45,7 @@ RM = rm
 ## If you want to disable the network code, try this. It probably doesn't
 ## work, but you're welcome to try ... Just comment out the next line.
 
-NETWORK = 1
+#NETWORK = 1
 
 ## Here be dragons... (Non-configurable parts past here.)
 
@@ -103,11 +103,10 @@ clean:;
 	-${RM} *.o ${PROGS}
 
 install: dcd
-	install -m 755 -d ${PREFIX}/bin
-	install -m 755 -s dcd ${PREFIX}/bin
-	install -m 755 -d ${PREFIX}/man/man1
-	install -m 644 dcd.1 ${PREFIX}/man/man1
-	install -m 755 -d ${HOME}/${CDI}
+	install -m 755 -d $(DESTDIR)${PREFIX}/bin $(DESTDIR)${PREFIX}/man/man1
+	install -m 755 -s dcd $(DESTDIR)${PREFIX}/bin
+	install -m 644 dcd.1 $(DESTDIR)${PREFIX}/man/man1
+	install -m 755 -d $(DESTDIR)${HOME}/${CDI}
 
 depend:
 	makedepend -- ${CFLAGS} ${EXTRA_CFLAGS} -- ${SRCS}
