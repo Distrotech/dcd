@@ -104,7 +104,7 @@ clean:;
 
 install: dcd
 	install -m 755 -d $(DESTDIR)${PREFIX}/bin $(DESTDIR)${PREFIX}/man/man1
-	install -m 755 -s dcd $(DESTDIR)${PREFIX}/bin
+	install -m 755 dcd $(DESTDIR)${PREFIX}/bin
 	install -m 644 dcd.1 $(DESTDIR)${PREFIX}/man/man1
 	install -m 755 -d $(DESTDIR)${HOME}/${CDI}
 
