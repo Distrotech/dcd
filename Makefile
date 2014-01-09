@@ -103,9 +103,9 @@ clean:;
 	-${RM} *.o ${PROGS}
 
 install: dcd
-	install -m 755 -d $(DESTDIR)${PREFIX}/bin $(DESTDIR)${PREFIX}/man/man1
+	install -m 755 -d $(DESTDIR)${PREFIX}/bin $(DESTDIR)${PREFIX}/share/man/man1
 	install -m 755 dcd $(DESTDIR)${PREFIX}/bin
-	install -m 644 dcd.1 $(DESTDIR)${PREFIX}/man/man1
+	install -m 644 dcd.1 $(DESTDIR)${PREFIX}/share/man/man1
 	install -m 755 -d $(DESTDIR)${HOME}/${CDI}
 
 depend:
